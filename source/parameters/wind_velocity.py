@@ -15,3 +15,4 @@ phi = 0.9 # what is this?
 def calculate_wind_velocity(c_s, f, v_esc, phi):
     v_p
     return v_p
+
