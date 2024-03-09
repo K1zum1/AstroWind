@@ -34,4 +34,3 @@ v_p = calculate_wind_velocity(c_s, f, v_esc, phi, beta, R_s=None, l=None)
 
 
 print(v_p) 
-np
