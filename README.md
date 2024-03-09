@@ -4,6 +4,8 @@ Compute the cylindrical radius (w) within the accretion disk, which is a measure
 
 Determine the mass-loss rate from the accretion disk as a function of w, based on a power-law relationship that correlates with the disk's mid-plane temperature.
 
-Calculate the azimuthal (rotational) component of the wind velocity emerging from the disk, which assumes Keplerian motion and angular momentum conservation.
+TBA
+
+Reference: https://articles.adsabs.harvard.edu/pdf/2006MNRAS.370..580K
 
 **STILL A WORK IN PROGRESS AS OF 2024-03-08**
