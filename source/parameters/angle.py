@@ -2,5 +2,8 @@ import numpy as np
 
 def calculate_angle():
     m1 = 1.4
+    delta = np.pi / 2 - np.arctan(m1)
+    return delta
 
-    delta = np.py / 2 - np.arctan(m_1)
+angle = calculate_angle()
+# print(angle)
