@@ -14,4 +14,4 @@ def get_source_point(y_values):
     return D
 
 D = get_source_point(y_values)
-print(D)
+#print(D)

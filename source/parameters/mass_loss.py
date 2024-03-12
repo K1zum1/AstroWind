@@ -1,7 +1,3 @@
-# The local mass-loss rate per unit area (m˙ ) is assumed to be proportional 
-# to the mid-plane temperature of the disc, and is a function
-# of the cylindrical radius. m_dot_w is parameterized as equation 2 on page 4 of Kurosawa et al. (2006)
-
 from coordinate_system import coordinate_system
 
 
