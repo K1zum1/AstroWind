@@ -25,6 +25,5 @@ def calculate_wind_velocity():
     v_p = c_s + (f * v_esc - c_s) * beta
     return v_p
 
-v_p = calculate_wind_velocity()
 
 #print(v_p)

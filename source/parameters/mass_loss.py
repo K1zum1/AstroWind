@@ -10,6 +10,6 @@ def calculate_mass_loss_rate(R_values):
 
     return (R_values)**p
 
-m_dot_wi = calculate_mass_loss_rate(R_values)
+
 
 #print(m_dot_wi)
