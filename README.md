@@ -6,4 +6,4 @@ Determine the mass-loss rate from the accretion disk as a function of w, based o
 
 To be added
 
-**STILL A WORK IN PROGRESS AS OF 2024-03-08**
+**STILL A WORK IN PROGRESS AS OF THIS NOTE**
