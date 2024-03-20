@@ -15,5 +15,5 @@ def calculate_wind_velocity(R_values):
     f = 0.9 # constant scale factor of the asymptotic terminal
     phi = 0.9 # what is this?
     beta = 1 # power scale
-    v_p = c_s + (f * v_esc - c_s) * (R_values / (R_values + 1.5e14)) ** beta
+    v_p = c_s + (f * v_esc - c_s) * ((R_values / (R_values + 1.5e14)) ** beta)
     return v_p
