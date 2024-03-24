@@ -18,4 +18,8 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     return rho_wi_l
 
 wind_density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
-np.savetxt("wind_density_output.csv", wind_density, delimiter=",")
+
+wind_density_flat = wind_density.reshape(wind_density.shape[0], -1)
+np.savetxt("wind_density_output.csv", wind_density_flat, delimiter=",")
+
+
