@@ -2,10 +2,10 @@ import numpy as np
 from astro_constants import AU
 from coordinate_system import coordinate_system
 
-R_values, y_values, _ = coordinate_system()
+R_values, y_values, R_plane = coordinate_system()
 
-def calculate_escape_velocity(R_values):
-    R_safe = np.maximum(R_values, 1e11) / AU
+def calculate_escape_velocity(R_plane):
+    R_safe = np.maximum(R_plane, 1e11) / AU
     v_esc = (42 * 10**5) / np.sqrt(R_safe) 
     return v_esc
 
