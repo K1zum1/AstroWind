@@ -6,8 +6,8 @@ from angle import calculate_angle
 from wind_velocity import calculate_wind_velocity
 from coordinate_system import coordinate_system, get_source_point
 
-R_values, y_values = coordinate_system()
-m_dot_wi = calculate_mass_loss_rate(R_values)
+R_values, y_values, _ = coordinate_system()
+m_dot_wi = calculate_mass_loss_rate(R_values, R_plane)
 vp_wi_l = calculate_wind_velocity(R_values)
 delta = calculate_angle()
 d = -5*AU
