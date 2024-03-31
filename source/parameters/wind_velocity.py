@@ -12,9 +12,9 @@ def calculate_escape_velocity(R_plane):
 v_esc = calculate_escape_velocity(R_values)
 
 def calculate_wind_velocity(R_values):
-    c_s = 10**5 # sound speed at the wind launching point in cm/s
-    f = 0.9 # constant scale factor of the asymptotic terminal
-    phi = 0.9 # what is this?
-    beta = 1 # power scale
+    c_s = 10**5 
+    f = 0.9 
+    phi = 0.9 
+    beta = 1
     v_p = c_s + (f * v_esc - c_s) * ((R_values / (R_values + 1.5e14)) ** beta)
     return v_p
