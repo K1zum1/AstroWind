@@ -12,7 +12,3 @@ def coordinate_system():
 
 R_values, y_values, R_plane, z_values = coordinate_system()
 
-def get_source_point(y_values):
-    d = -5 * AU
-    D = y_values + d
-    return D

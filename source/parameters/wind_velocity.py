@@ -12,7 +12,7 @@ def calculate_escape_velocity(R_plane):
 v_esc = calculate_escape_velocity(R_values)
 
 def calculate_wind_velocity(R_values):
-    c_s = 10**5 
+    c_s_rb = 1.7321e5 * (r_b / AU)**(-0.575)
     f = 0.9 
     phi = 0.9 
     beta = 3
