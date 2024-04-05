@@ -1,7 +1,7 @@
 from coordinate_system import coordinate_system
 import numpy as np
 
-R_values, _, R_plane = coordinate_system()
+R_values, _, R_plane, _ = coordinate_system()
 
 def calculate_mass_loss_rate(R_values, R_plane):
     alpha = 0.76
