@@ -1,4 +1,3 @@
-import sympy as sp
 import numpy as np
 from astro_constants import AU
 from mass_loss import calculate_mass_loss_rate
@@ -10,16 +9,14 @@ R_values, y_values, R_plane = coordinate_system()
 m_dot_wi = calculate_mass_loss_rate(R_values, R_plane)
 vp_wi_l = calculate_wind_velocity(R_values)
 delta = calculate_angle()
-d = -5*AU
+d = -5 * AU
 D_wi_l = get_source_point(y_values)
 
 def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
-    rho_wi_l = (m_dot_wi / (vp_wi_l * sp.Abs(sp.cos(delta)))) * (d / (D_wi_l * sp.cos(delta)))**2
+    rho_wi_l = (m_dot_wi / (vp_wi_l * np.abs(np.cos(delta)))) * (d / (D_wi_l * np.cos(delta)))**2
     return rho_wi_l
 
 wind_density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
 wind_density_flat = wind_density.reshape(wind_density.shape[0], -1)
 np.savetxt("wind_density_output.csv", wind_density_flat, delimiter=",")
-
-
