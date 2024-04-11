@@ -16,5 +16,7 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     return (m_dot_wi / (vp_wi_l * np.abs(np.cos(delta)))) * (d / (D_wi_l * np.cos(delta)))**2
 
 density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
+
 density_flat = density.reshape(density.shape[0], -1)
+
 np.savetxt("wind_density_output.csv", density_flat, delimiter=",")

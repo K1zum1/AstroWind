@@ -28,8 +28,10 @@ def calculate_wind_velocity(R_values, y_values, z_values, f=0.9, beta=3):
     rb = get_source_point(y_values, z_values, d)
     c_s_rb = calculate_sound_speed(rb)
     v_esc_R = calculate_escape_velocity(R_values)
+
     r = np.sqrt(y_values**2 + z_values**2)
     l = np.sqrt(r**2 * (1 - d / (d + z_values))**2 + z_values**2)
     v_p = c_s_rb + (f * v_esc_R - c_s_rb) * (l / (l + 1.5e14))**beta
+    
     return v_p
 
