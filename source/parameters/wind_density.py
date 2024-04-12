@@ -17,4 +17,6 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
 
 density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
-np.save("wind_density_output.npy", density)
+density_flattened = density.flatten()
+
+np.savetxt("wind_density_output.csv", density_flattened, delimiter=',', header='Density', comments='')
