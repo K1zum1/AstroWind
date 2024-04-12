@@ -3,3 +3,5 @@ __pycache__/
 source/parameters/__pycache__
 source/__pycache__
 *.csv
+*.npy
+*.png
