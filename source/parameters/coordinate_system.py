@@ -1,5 +1,5 @@
 import numpy as np
-from astro_constants import AU
+from parameters import *
 
 def coordinate_system():
     x_values = np.linspace(1, 65, 64) * AU  
