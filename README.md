@@ -2,6 +2,12 @@ This program models aspects of a stellar accretion disk winds, computing the cyl
 
 **PROJECT TO BE COMPLETED BY JUNE 2024**
 
-![plot](https://github.com/K1zum1/Disc-Wind-Density-Program/assets/158886560/075b50d3-241a-4b3f-911d-d00dec05c0b1)
-![plot](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/3d_density_distributions.png)
+To run the density computation, navigate to the source directory and run
 
+`python parameters\wind_density.py`
+
+This will generate a 1D CSV file called `wind_density_output.csv`. 
+
+Then use the `density_map.ipynb` to view the density. (Note: Jupyter notebook is required to use this)
+
+Optionally use the `density_map.py` if you do not have Jupyter Notebook installed.
