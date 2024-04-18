@@ -1,16 +1,15 @@
-from coordinate_system import coordinate_system
-from parameters import *
 import numpy as np
+from constants import *  
 
-_, _, R_plane, _ = coordinate_system()
+def calculate_mass_loss_rate(R_plane, M_dot_w, p, r_in, r_out):
+    mask = (R_plane >= r_in) & (R_plane <= r_out)
 
-def calculate_mass_loss_rate(R_plane, M_dot_w, p):
-    r_in = np.min(R_plane)
-    r_out = np.max(R_plane)
+    
+    mass_loss_rate = np.zeros_like(R_plane)  
+    if np.any(mask):
+        effective_r_in = R_plane[mask].min()
+        effective_r_out = R_plane[mask].max()
+        k = ((p + 2) * M_dot_w) / (2 * np.pi * (effective_r_out**(p + 2) - effective_r_in**(p + 2)))
+        mass_loss_rate[mask] = k * (R_plane[mask]**p)
 
-    k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2)))
-
-    return k * (R_plane)**p
-
-
-
+    return mass_loss_rate
