@@ -10,7 +10,7 @@ def get_source_point(R_plane, z_values, d):
 
 def calculate_vp(R_plane, z_values, d, GM_star, lmbda):
 
-    r_base = R_plane * np.abs(d) / (np.abs(d) + np.abs(z_values) + 1e-10)
+    r_base = R_plane * np.abs(d) / (np.abs(d) + np.abs(z_values))
     factor = 2 * lmbda - 3
     if factor < 0:
         raise ValueError("Invalid value of lambda causing sqrt of negative number")
