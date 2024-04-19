@@ -13,5 +13,5 @@ d = -5 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
 
 # Radial Boundaries for Mass Loss Calculation
-r_in = 10 * AU  # Inner boundary radius
-r_out = 50 * AU  # Outer boundary radius
+r_in = 5 * AU  # Inner boundary radius
+r_out = 10 * AU  # Outer boundary radius

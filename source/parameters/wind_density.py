@@ -5,14 +5,15 @@ from wind_velocity import *
 from mass_loss import *
 from angle import *
 
-R_values, y_values, R_plane, z_values = coordinate_system()
+R_values, _, R_plane, z_values = coordinate_system()
 vp_wi_l =calculate_vp(R_plane, z_values, d, GM_star, lmbda)
 m_dot_wi = calculate_mass_loss_rate(R_plane, M_dot_w, p, r_in, r_out)
 delta = calculate_angle(R_plane, z_values)
 D_wi_l = get_source_point(R_plane,z_values, d)
 
 def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
-    return (m_dot_wi / (vp_wi_l * np.cos(delta))) * (d / (D_wi_l * np.cos(delta)))**2
+    abs_cos_delta = np.abs(np.cos(delta))
+    return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta))**2
 
 density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 

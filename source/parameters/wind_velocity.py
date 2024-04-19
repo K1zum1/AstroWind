@@ -5,7 +5,7 @@ from coordinate_system import coordinate_system
 R_values, y_values, R_plane, z_values = coordinate_system()
 
 def get_source_point(R_plane, z_values, d):
-    D = np.sqrt(R_plane**2 + (z_values + d)**2)
+    D = np.sqrt(R_plane**2 + (np.abs(z_values) + np.abs(d)**2))
     return D
 
 def calculate_vp(R_plane, z_values, d, GM_star, lmbda):
