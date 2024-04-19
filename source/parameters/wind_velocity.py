@@ -8,14 +8,13 @@ def get_source_point(R_plane, z_values, d):
     D = np.sqrt(R_plane**2 + (z_values + d)**2)
     return D
 
-def calculate_vp(y_values, z_values, d, GM_star, lmbda):
+def calculate_vp(R_plane, z_values, d, GM_star, lmbda):
 
-    r = np.sqrt(y_values**2 + z_values**2)
-    rb = r * np.abs(d) / (np.abs(d + z_values) + 1e-10)
+    r_base = R_plane * np.abs(d) / (np.abs(d) + np.abs(z_values) + 1e-10)
     factor = 2 * lmbda - 3
     if factor < 0:
         raise ValueError("Invalid value of lambda causing sqrt of negative number")
-    vp = np.sqrt(factor) * np.sqrt(GM_star) / np.sqrt(rb)
+    vp = np.sqrt(factor) * np.sqrt(GM_star) / np.sqrt(r_base)
 
     # print("rb:", rb)
     # print("lmbda:", lmbda)

@@ -4,7 +4,6 @@ from parameters import *
 def calculate_mass_loss_rate(R_plane, M_dot_w, p, r_in, r_out):
     mask = (R_plane >= r_in) & (R_plane <= r_out)
 
-    
     mass_loss_rate = np.zeros_like(R_plane)  
     if np.any(mask):
         effective_r_in = R_plane[mask].min()
