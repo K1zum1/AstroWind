@@ -14,11 +14,16 @@ def calculate_vp(d, GM_star, lmbda, r_base):
         raise ValueError("Invalid value of lambda causing sqrt of negative number")
 
     vp = (np.sqrt(factor) * np.sqrt(GM_star)) / np.sqrt(r_base)
-    
     return vp
 
 vp = calculate_vp(d, GM_star, lmbda, r_base)
-print(vp)
+vp = vp.flatten()
+
+
+output_path = "./setup/wind_output.csv"
+
+np.savetxt(output_path, vp, delimiter=',', header='Density', comments='')
+
 # shape = r_base.shape
 
 # with open("r_base_output.csv", "w") as file:

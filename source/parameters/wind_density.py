@@ -19,7 +19,11 @@ density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
 density_flattened = density.flatten()
 
-np.savetxt("wind_density_output.csv", density_flattened, delimiter=',', header='Density', comments='')
+output_path_source = "./visualize/wind_density_output.csv"
+output_path_setup = "./setup/wind_density_output.csv"
+
+np.savetxt(output_path_source, density_flattened, delimiter=',', header='Density', comments='')
+np.savetxt(output_path_setup, density_flattened, delimiter=',', header='Density', comments='')
 
 # shape = density.shape
 # print("Density grid shape:", shape)
