@@ -1,6 +1,6 @@
 # Stellar Accretion Disk Winds Model
 
-This program simulates aspects of stellar accretion disk winds. It computes the cylindrical radius on a grid, the mass-loss rate as a function of w, and the azimuthal velocity component of the wind, assuming conservation of angular momentum. The model assumes some properties are constant. Detailed documentation will be provided later.
+This program simulates aspects of stellar accretion disk winds. Key computations involve detailed analyses of mass-loss rates, wind velocities (both azimuthal and poloidal components), and the cylindrical radius on a 3D Cartesian grid.
 
 **Important:** This project is to be completed by June 2024.
 
