@@ -1,13 +1,34 @@
-This program models aspects of a stellar accretion disk winds, computing the cylindrical radius on a grid, the mass-loss rate as a function of w, and the wind's azimuthal velocity component, assuming conservation of angular momentum. The equation has been modified to assume some constant properities. Documentation of this will be written later.
+# Stellar Accretion Disk Winds Model
 
-**PROJECT TO BE COMPLETED BY JUNE 2024**
+This program simulates aspects of stellar accretion disk winds. It computes the cylindrical radius on a grid, the mass-loss rate as a function of w, and the azimuthal velocity component of the wind, assuming conservation of angular momentum. The model assumes some properties are constant. Detailed documentation will be provided later.
 
-To run the density computation, navigate to the source directory and run
+**Important:** This project is to be completed by June 2024.
 
-`python parameters\wind_density.py`
+## Prerequisites
 
-This will generate a 1D CSV file called `wind_density_output.csv`. 
+- Python
+- Jupyter Notebook (for `density_map.ipynb`)
 
-Then use the `density_map.ipynb` to view the density. (Note: Jupyter notebook is required to use this)
+## Setup and Execution
 
-Optionally use the `density_map.py` if you do not have Jupyter Notebook installed.
+Follow these steps to compute and view the density map:
+
+1. **Density Computation**:
+   - Navigate to the source directory.
+   - Run the following command to generate the `wind_density_output.csv` file:
+     ```bash
+     python parameters\wind_density.py
+     ```
+
+2. **Viewing the Density Map**:
+   - If you have Jupyter Notebook installed, open `density_map.ipynb`.
+   - Alternatively, run `density_map.py` if you do not have Jupyter Notebook:
+     ```bash
+     python density_map.py
+     ```
+
+## Expected Output
+
+Upon successful execution with correctly defined parameters, you should observe a cone-like structure radiating outwards in the density map. If this is not the case, please double-check your parameters to ensure they align with the expected measurements.
+
+![Density Map Output](example.png)

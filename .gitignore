@@ -1,7 +1,3 @@
-__pycache__/
 *.pyc
-source/parameters/__pycache__
-source/__pycache__
 *.csv
 *.npy
-*.png
