@@ -26,9 +26,8 @@ np.savetxt(output_path_source, density_flattened, delimiter=',', header='Density
 np.savetxt(output_path_setup, density_flattened, delimiter=',', header='Density', comments='')
 
 # shape = density.shape
-# print("Density grid shape:", shape)
 
-# with open("wind_density_output.csv", "w") as f:
+# with open("./dataset/check_density_values.csv", "w") as f:
 #     f.write("X, Y, Z, Density\n")
 #     for i in range(shape[0]):
 #         for j in range(shape[1]):

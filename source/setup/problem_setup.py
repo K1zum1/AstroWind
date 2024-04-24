@@ -78,7 +78,7 @@ r = R_plane
 tan_y_x = np.arctan2(Y, X)
 tan_z_r = np.arctan2(Z, r)
 
-vp_data = "wind_velocity_output.csv"
+vp_data = "wind_output.csv"
 vp = np.loadtxt(vp_data, delimiter=",")
 vp = vp.reshape((64, 64, 64))  
 
@@ -96,19 +96,10 @@ Vz = vp * np.sin(tan_z_r)
 rhogas_data = "wind_density_output.csv"
 rhogas_flat = np.loadtxt(rhogas_data, delimiter=",")
 rhogas = rhogas_flat.reshape(nx, ny, nz)
-
-
 rhod = rhogas * dusttogas
 tgas = np.zeros((nx, ny, nz)) + temp0
 vturb = 792 * np.sqrt(tgas)
 
-
-rhogas_data = "wind_density_output.csv"
-rhogas_flat = np.loadtxt(rhogas_data, delimiter=",")
-rhogas = rhogas_flat.reshape(nx, ny, nz)
-rhod = rhogas * dusttogas
-tgas = np.zeros((nx, ny, nz)) + temp0
-vturb = 792 * np.sqrt(tgas)
 
 
 #-------------MAIN MODEL SETUP DONE----------------
