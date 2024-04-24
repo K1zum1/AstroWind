@@ -44,4 +44,6 @@ fig.subplots_adjust(right=0.8)
 cbar_ax = fig.add_axes([0.85, 0.15, 0.05, 0.7])
 fig.colorbar(im, cax=cbar_ax)
 
+# plt.savefig("wind_density_visualization.png", dpi=300)  # This line is commented out to prevent saving
+
 plt.show()
