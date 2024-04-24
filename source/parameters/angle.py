@@ -1,8 +1,8 @@
 import numpy as np
 
-from coordinate_system import coordinate_system
+from coordinate_system import *
 
-R_plane, z_values, *rest = coordinate_system()
+R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
 
 def calculate_angle(R_plane, z_values):
     m1 = z_values / R_plane

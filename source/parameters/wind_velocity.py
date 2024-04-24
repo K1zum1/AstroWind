@@ -2,11 +2,13 @@ import numpy as np
 from parameters import *
 from coordinate_system import *
 
-R_plane, r_base, *rest = coordinate_system()
+R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
 
 def get_source_point(R_plane, z_values, d):
     D = np.sqrt(R_plane**2 + (np.abs(z_values) + np.abs(d))**2)
     return D
+
+import numpy as np
 
 def calculate_vp(d, GM_star, lmbda, r_base):
     factor = 2 * lmbda - 3
@@ -17,12 +19,14 @@ def calculate_vp(d, GM_star, lmbda, r_base):
     return vp
 
 vp = calculate_vp(d, GM_star, lmbda, r_base)
-vp = vp.flatten()
-
 
 output_path = "./setup/wind_output.csv"
 
-np.savetxt(output_path, vp, delimiter=',', header='Density', comments='')
+
+
+vp_flat = vp.flatten()
+np.savetxt(output_path, vp_flat, delimiter=',', header='Density', comments='')
+
 
 # shape = r_base.shape
 
