@@ -26,14 +26,23 @@ np.savetxt(output_path_source, density_flattened, delimiter=',', header='Density
 np.savetxt(output_path_setup, density_flattened, delimiter=',', header='Density', comments='')
 
 shape = density.shape
+markdown_table_path = "./dataset/check_density_values.md"
 
-with open("./dataset/check_density_values.csv", "w") as f:
-    f.write("X (AU), Y (AU), Z (AU), Density (AU^-3)\n")  
+def format_number(number, is_decimal=False):
+
+    if is_decimal:
+        return f"{number:20.8f}"  
+    else:
+        return f"{number:20.2e}" 
+
+with open(markdown_table_path, "w") as f:
+    f.write("| X (AU)               | Y (AU)               | Z (AU)               | Density (AU^-3)      |\n")
+    f.write("|----------------------|----------------------|----------------------|----------------------|\n")
     for i in range(shape[0]):
         for j in range(shape[1]):
             for k in range(shape[2]):
-                x_in_au = X[i, j, k] / AU
-                y_in_au = Y[i, j, k] / AU
-                z_in_au = Z[i, j, k] / AU
-                density_in_au3 = density[i, j, k] / AU
-                f.write(f"{x_in_au},{y_in_au},{z_in_au},{density_in_au3}\n")
+                x_in_au = format_number(X[i, j, k] / AU, is_decimal=True)
+                y_in_au = format_number(Y[i, j, k] / AU, is_decimal=True)
+                z_in_au = format_number(Z[i, j, k] / AU, is_decimal=True)
+                density_in_au3 = format_number(density[i, j, k], is_decimal=False)
+                f.write(f"| {x_in_au} | {y_in_au} | {z_in_au} | {density_in_au3} |\n")

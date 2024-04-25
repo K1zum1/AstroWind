@@ -28,15 +28,24 @@ vp_flat = vp.flatten()
 np.savetxt(output_path, vp_flat, delimiter=',', header='Velocity', comments='')
 
 
-shape = r_base.shape
+def format_number(number, is_decimal=False):
 
-with open("./dataset/velocity_output.csv", "w") as file:
-    file.write("X (AU), Y (AU), Z (AU), r_base (AU)\n")
+    if is_decimal:
+        return f"{number:20.8f}"  
+    else:
+        return f"{number:20.2e}"  
+
+shape = r_base.shape
+markdown_table_path = "./dataset/check_velocity_values.md"
+
+with open(markdown_table_path, "w") as file:
+    file.write("| X (AU)               | Y (AU)               | Z (AU)               | Velocity (AU)        |\n")
+    file.write("|----------------------|----------------------|----------------------|----------------------|\n")
     for i in range(shape[0]):
         for j in range(shape[1]):
             for k in range(shape[2]):
-                x_in_au = X[i, j, k] / AU
-                y_in_au = Y[i, j, k] / AU
-                z_in_au = Z[i, j, k] / AU
-                r_base_in_au = r_base[i, j, k] / AU
-                file.write(f"{x_in_au},{y_in_au},{z_in_au},{r_base_in_au}\n")
+                x_in_au = format_number(X[i, j, k] / AU, is_decimal=True)
+                y_in_au = format_number(Y[i, j, k] / AU, is_decimal=True)
+                z_in_au = format_number(Z[i, j, k] / AU, is_decimal=True)
+                vp_in_au = format_number(vp[i, j, k], is_decimal=False) 
+                file.write(f"| {x_in_au} | {y_in_au} | {z_in_au} | {vp_in_au} |\n")
