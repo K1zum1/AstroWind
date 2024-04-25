@@ -25,11 +25,15 @@ output_path_setup = "./setup/wind_density_output.csv"
 np.savetxt(output_path_source, density_flattened, delimiter=',', header='Density', comments='')
 np.savetxt(output_path_setup, density_flattened, delimiter=',', header='Density', comments='')
 
-# shape = density.shape
+shape = density.shape
 
-# with open("./dataset/check_density_values.csv", "w") as f:
-#     f.write("X, Y, Z, Density\n")
-#     for i in range(shape[0]):
-#         for j in range(shape[1]):
-#             for k in range(shape[2]):
-#                 f.write(f"{X[i, j, k]},{Y[i, j, k]},{Z[i, j, k]},{density[i, j, k]}\n")
+with open("./dataset/check_density_values.csv", "w") as f:
+    f.write("X (AU), Y (AU), Z (AU), Density (AU^-3)\n")  
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            for k in range(shape[2]):
+                x_in_au = X[i, j, k] / AU
+                y_in_au = Y[i, j, k] / AU
+                z_in_au = Z[i, j, k] / AU
+                density_in_au3 = density[i, j, k] / AU
+                f.write(f"{x_in_au},{y_in_au},{z_in_au},{density_in_au3}\n")

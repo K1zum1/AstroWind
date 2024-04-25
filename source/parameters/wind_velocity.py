@@ -28,15 +28,15 @@ vp_flat = vp.flatten()
 np.savetxt(output_path, vp_flat, delimiter=',', header='Velocity', comments='')
 
 
-# shape = r_base.shape
+shape = r_base.shape
 
-# with open("r_base_output.csv", "w") as file:
-#     file.write("X (AU), Y (AU), Z (AU), r_base (AU)\n")
-#     for i in range(shape[0]):
-#         for j in range(shape[1]):
-#             for k in range(shape[2]):
-#                 x_in_au = X[i, j, k] / AU
-#                 y_in_au = Y[i, j, k] / AU
-#                 z_in_au = Z[i, j, k] / AU
-#                 r_base_in_au = r_base[i, j, k] / AU
-#                 file.write(f"{x_in_au},{y_in_au},{z_in_au},{r_base_in_au}\n")
+with open("./dataset/velocity_output.csv", "w") as file:
+    file.write("X (AU), Y (AU), Z (AU), r_base (AU)\n")
+    for i in range(shape[0]):
+        for j in range(shape[1]):
+            for k in range(shape[2]):
+                x_in_au = X[i, j, k] / AU
+                y_in_au = Y[i, j, k] / AU
+                z_in_au = Z[i, j, k] / AU
+                r_base_in_au = r_base[i, j, k] / AU
+                file.write(f"{x_in_au},{y_in_au},{z_in_au},{r_base_in_au}\n")
