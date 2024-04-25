@@ -25,7 +25,7 @@ output_path = "./setup/wind_output.csv"
 
 
 vp_flat = vp.flatten()
-np.savetxt(output_path, vp_flat, delimiter=',', header='Density', comments='')
+np.savetxt(output_path, vp_flat, delimiter=',', header='Velocity', comments='')
 
 
 # shape = r_base.shape
