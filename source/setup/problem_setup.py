@@ -55,6 +55,7 @@ nlam     = lam.size
 #
 # Make grid with size interpreted as half-width size here
 #
+GM_star = 1.334e26
 xi       = np.linspace(-sizex,sizex,nx+1)
 yi       = np.linspace(-sizey,sizey,ny+1)
 zi       = np.linspace(-sizez,sizez,nz+1)
@@ -79,7 +80,7 @@ tan_y_x = np.arctan2(Y, X)
 tan_z_r = np.arctan2(Z, r)
 
 vp_data = "wind_output.csv"
-vp = np.loadtxt(vp_data, delimiter=",")
+vp = np.loadtxt(vp_data, delimiter=",", skiprows=1)
 vp = vp.reshape((64, 64, 64))  
 
 sqrt_GMstar_r = np.sqrt(GM_star / (r + 1e-10))
@@ -94,7 +95,7 @@ Vz = vp * np.sin(tan_z_r)
 
 
 rhogas_data = "wind_density_output.csv"
-rhogas_flat = np.loadtxt(rhogas_data, delimiter=",")
+rhogas_flat = np.loadtxt(rhogas_data, delimiter=",", skiprows=1)
 rhogas = rhogas_flat.reshape(nx, ny, nz)
 rhod = rhogas * dusttogas
 tgas = np.zeros((nx, ny, nz)) + temp0
