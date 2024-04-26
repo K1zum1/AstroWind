@@ -4,9 +4,13 @@ from parameters import *
 
 def coordinate_system():
     d = -5 * AU
-    x_values = np.linspace(1, 64, 64) * AU
-    y_values = np.linspace(1, 64, 64) * AU
-    z_values = np.linspace(1, 64, 64) * AU
+    x_values = np.linspace(-64, 64, 64) * AU
+    y_values = np.linspace(-64, 64, 64) * AU
+    z_values = np.linspace(-64, 64, 64) * AU
+
+    x_values = x_values[x_values != 0]
+    y_values = y_values[y_values != 0]
+    z_values = z_values[z_values != 0]
 
     X, Y, Z = np.meshgrid(x_values, y_values, z_values, indexing="ij")
     R_plane = np.sqrt(X**2 + Y**2)
