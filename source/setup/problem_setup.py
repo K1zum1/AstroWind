@@ -4,6 +4,7 @@
 import numpy as np
 from radmc3dPy.natconst import *
 pi  = 3.1415926535897932385e0
+AU = 1.496e+13
 #
 # Import plotting libraries (start Python with ipython --matplotlib)
 #
@@ -19,9 +20,9 @@ nphot    = 1000000
 nx       = 64
 ny       = 64
 nz       = 64
-sizex    = 100*au
-sizey    = 100*au
-sizez    = 100*au
+sizex    = 100*AU
+sizey    = 100*AU
+sizez    = 100*AU
 #
 # Model parameters
 #
@@ -67,7 +68,6 @@ xx       = qq[0]
 yy       = qq[1]
 zz       = qq[2]
 
-AU = 1.496e+13  
 x_values = np.linspace(1, 64, 64) * AU
 y_values = np.linspace(1, 64, 64) * AU
 z_values = np.linspace(1, 64, 64) * AU

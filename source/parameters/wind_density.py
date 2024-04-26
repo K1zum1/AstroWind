@@ -11,9 +11,13 @@ m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
 delta = calculate_angle(R_plane, z_values)
 D_wi_l = get_source_point(R_plane, z_values, d)
 
+
 def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     abs_cos_delta = np.abs(np.cos(delta))
-    return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta))**2
+    return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (
+        np.abs(d) / (D_wi_l * abs_cos_delta)
+    ) ** 2
+
 
 density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
@@ -22,22 +26,32 @@ density_flattened = density.flatten()
 output_path_source = "./visualize/wind_density_output.csv"
 output_path_setup = "./setup/wind_density_output.csv"
 
-np.savetxt(output_path_source, density_flattened, delimiter=',', header='Density', comments='')
-np.savetxt(output_path_setup, density_flattened, delimiter=',', header='Density', comments='')
+np.savetxt(
+    output_path_source, density_flattened, delimiter=",", header="Density", comments=""
+)
+np.savetxt(
+    output_path_setup, density_flattened, delimiter=",", header="Density", comments=""
+)
 
 shape = density.shape
 markdown_table_path = "./dataset/check_density_values.md"
 
+
 def format_number(number, is_decimal=False):
 
     if is_decimal:
-        return f"{number:20.8f}"  
+        return f"{number:20.8f}"
     else:
-        return f"{number:20.2e}" 
+        return f"{number:20.2e}"
+
 
 with open(markdown_table_path, "w") as f:
-    f.write("| X (AU)               | Y (AU)               | Z (AU)               | Density (AU^-3)      |\n")
-    f.write("|----------------------|----------------------|----------------------|----------------------|\n")
+    f.write(
+        "| X (AU)               | Y (AU)               | Z (AU)               | Density (AU^-3)      |\n"
+    )
+    f.write(
+        "|----------------------|----------------------|----------------------|----------------------|\n"
+    )
     for i in range(shape[0]):
         for j in range(shape[1]):
             for k in range(shape[2]):
