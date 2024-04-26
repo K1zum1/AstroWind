@@ -28,9 +28,9 @@ sizez    = 100*AU
 #
 omega    = 2*pi/(50*year)
 rhogas0  = 1e-16
-temp0    = 100.0
-dusttogas= 0.01
-vturb0   = 3.*1e5
+temp0    = 30
+dusttogas= 0.001
+vturb0   = 1.*1e5
 #
 # Star parameters
 #
@@ -68,11 +68,7 @@ xx       = qq[0]
 yy       = qq[1]
 zz       = qq[2]
 
-x_values = np.linspace(1, 64, 64) * AU
-y_values = np.linspace(1, 64, 64) * AU
-z_values = np.linspace(1, 64, 64) * AU
-
-X, Y, Z = np.meshgrid(x_values, y_values, z_values, indexing='ij')
+X, Y, Z = np.meshgrid(xc, yc, zc)
 R_plane = np.sqrt(X**2 + Y**2)
 
 r = R_plane  
