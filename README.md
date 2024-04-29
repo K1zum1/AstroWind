@@ -8,6 +8,9 @@ This program simulates aspects of stellar accretion disk winds. Key computations
 
 - Python
 - Jupyter Notebook (for `density_map.ipynb`)
+- Matplotlib
+- NumPy
+- SciPy
 
 ## Setup and Execution
 
