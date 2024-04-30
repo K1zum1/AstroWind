@@ -1,37 +1,43 @@
-This is the setup file for LTE3D, to be modified alongside data from [Disc-Wind-Density-Program](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/parameters/wind_density_output.csv). This will be fed into RADMC3D to produce an output image.
+# LTE3D Setup Guide
 
-Here is how to start the model. First make sure to have compiled radmc3d
-Then enter this directory, and type
+This setup guide is designed for the LTE3D project, which uses data from the [Disc-Wind-Density-Program](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/parameters/wind_density_output.csv) to generate visual outputs with RADMC3D.
 
-`python3 problem_setup.py`
+## Prerequisites
 
-Then in the linux shell type, for instance:
+Ensure the following requirements are met:
+- RADMC3D compiled and ready on your system
+- You are able to generate data through the DWDP program
 
- `radmc3d image lambda 2600.757 incl 60 phi 30`
+## Installation and Execution
 
-where 2600.757 is the wavelength in micron of the CO 1-0 line. Due to the
-solid-body rotation of the gas an image around the line center of CO will
-become a band in the image. You can also do this:
+**To initiate the LTE3D model:**
 
- `radmc3d image iline 1 incl 60 phi 30`
+Compile `radmc3d` if not already compiled.
+Navigate to the directory containing the setup files.
+Run the setup script:
+```python
+python3 problem_setup.py
+```
 
-which does the same. Note that we now have only a single molecule. If
-we have more, you may need to specify which molecule/atom you mean:
+For an image with an inclination of 80 degrees and a line velocity of 2 km/s:
+```bash
+radmc3d image incl 80 iline 2 vkms 7
+```
+For an image at 1300 microns with an inclination of 70 degrees and azimuthal angle of 30 degrees:
+```bash
+radmc3d image lambda 1300 incl 70 phi 30
+```
 
-`radmc3d image imolspec 1 iline 1 incl 60 phi 30`
+Windows users can plot using Python if CLI issues arise:
 
-You can also make an image at a different velocity channel:
-
-`radmc3d image iline 1 vkms 10 incl 60 phi 30`
-
-which moves the band in the image a bit due to a 10 km/s shift
-off the line center.
-
-NOTE: If you would put vturb0=0.d0 in the problem_setup.pro, then the
-      local line width becomes so small, that the image resolution 
-      of 100x100 (default) will not be enough to resolve the band in 
-      the image. This will lead to inaccurate total flux estimates.
-      Try it out, and play with changing velocity channel. Note: in
-      this case the "doppler catching" algorithm will not help, because
-      the problem here lies not in the ray-tracing, but in the image
-      resolution. 
+```python
+import matplotlib
+matplotlib.use('Agg')
+from radmc3dPy.image import *
+import matplotlib.pyplot as plt
+from matplotlib import cm
+a = readImage()
+plotImage(a, log=True, maxlog=4, cmap=cm.hot, bunit='snu', dpc=140, arcsec=True)
+plt.savefig('output_image.png') 
+plt.close()
+```
