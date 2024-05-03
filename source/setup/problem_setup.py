@@ -1,5 +1,6 @@
 import numpy as np
 from parameters import *
+from radmc3dPy.natconst import *
 
 vp_data = "wind_output.csv"
 vp = np.loadtxt(vp_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)

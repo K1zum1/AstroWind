@@ -46,14 +46,19 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     abs_cos_delta = np.abs(np.cos(delta))
     return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
 
-R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
-vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
-m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
-delta = calculate_angle(R_plane, z_values)
-D_wi_l = get_source_point(R_plane, z_values, d)
-density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
+try:
+    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
+    vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
+    m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
+    delta = calculate_angle(R_plane, z_values)
+    D_wi_l = get_source_point(R_plane, z_values, d)
+    density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
-density_flattened = density.flatten()
-np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
-vp_flat = vp_wi_l.flatten()
-np.savetxt("wind_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
+    density_flattened = density.flatten()
+    np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
+    vp_flat = vp_wi_l.flatten()
+    np.savetxt("wind_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
+
+    print("The simulation has been successfully executed and the results have been saved.")
+except Exception as e:
+    print("An error occurred during the simulation:", str(e))
