@@ -1,103 +1,25 @@
-#
-# Import NumPy for array handling
-#
 import numpy as np
-from radmc3dPy.natconst import *
-pi  = 3.1415926535897932385e0
-AU = 1.496e+13
-#
-# Import plotting libraries (start Python with ipython --matplotlib)
-#
-#from mpl_toolkits.mplot3d import axes3d
-#from matplotlib import pyplot as plt
-#
-# Monte Carlo parameters
-#
-nphot    = 1000000
-#
-# Grid parameters
-#
-nx       = 64
-ny       = 64
-nz       = 64
-sizex    = 100*AU
-sizey    = 100*AU
-sizez    = 100*AU
-#
-# Model parameters
-#
-omega    = 2*pi/(50*year)
-rhogas0  = 1e-16
-temp0    = 30
-dusttogas= 0.001
-vturb0   = 1.*1e5
-#
-# Star parameters
-#
-mstar    = ms
-rstar    = rs
-tstar    = ts
-pstar    = np.array([0.,0.,0.])
-#
-# Write the wavelength_micron.inp file
-#
-lam1     = 0.1e0
-lam2     = 7.0e0
-lam3     = 25.e0
-lam4     = 1.0e4
-n12      = 20
-n23      = 100
-n34      = 30
-lam12    = np.logspace(np.log10(lam1),np.log10(lam2),n12,endpoint=False)
-lam23    = np.logspace(np.log10(lam2),np.log10(lam3),n23,endpoint=False)
-lam34    = np.logspace(np.log10(lam3),np.log10(lam4),n34,endpoint=True)
-lam      = np.concatenate([lam12,lam23,lam34])
-nlam     = lam.size
-#
-# Make grid with size interpreted as half-width size here
-#
-GM_star = 1.334e26
-xi       = np.linspace(-sizex,sizex,nx+1)
-yi       = np.linspace(-sizey,sizey,ny+1)
-zi       = np.linspace(-sizez,sizez,nz+1)
-xc       = 0.5 * ( xi[0:nx] + xi[1:nx+1] )
-yc       = 0.5 * ( yi[0:ny] + yi[1:ny+1] )
-zc       = 0.5 * ( zi[0:nz] + zi[1:nz+1] )
-qq       = np.meshgrid(xc,yc,zc,indexing='ij')
-xx       = qq[0]
-yy       = qq[1]
-zz       = qq[2]
+from parameters import *
+
+vp_data = "wind_output.csv"
+vp = np.loadtxt(vp_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
+rhogas_data = "wind_density_output.csv"
+rhogas = np.loadtxt(rhogas_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
 
 X, Y, Z = np.meshgrid(xc, yc, zc)
 R_plane = np.sqrt(X**2 + Y**2)
-
-r = R_plane  
+r = R_plane
 tan_y_x = np.arctan2(Y, X)
 tan_z_r = np.arctan2(Z, r)
-
-vp_data = "wind_output.csv"
-vp = np.loadtxt(vp_data, delimiter=",", skiprows=1)
-vp = vp.reshape((64, 64, 64))  
-
 sqrt_GMstar_r = np.sqrt(GM_star / (r + 1e-10))
 
-Vx = (sqrt_GMstar_r * np.sin(tan_y_x) +
-      vp * np.cos(tan_z_r) * np.cos(tan_y_x))
-
-Vy = (-sqrt_GMstar_r * np.cos(tan_y_x) +
-      vp * np.cos(tan_z_r) * np.sin(tan_y_x))
-
+Vx = (sqrt_GMstar_r * np.sin(tan_y_x) + vp * np.cos(tan_z_r) * np.cos(tan_y_x))
+Vy = (-sqrt_GMstar_r * np.cos(tan_y_x) + vp * np.cos(tan_z_r) * np.sin(tan_y_x))
 Vz = vp * np.sin(tan_z_r)
 
-
-rhogas_data = "wind_density_output.csv"
-rhogas_flat = np.loadtxt(rhogas_data, delimiter=",", skiprows=1)
-rhogas = rhogas_flat.reshape(nx, ny, nz)
 rhod = rhogas * dusttogas
-tgas = np.zeros((nx, ny, nz)) + temp0
-vturb = 792 * np.sqrt(tgas)
-
-
+tgas = np.full((nx, ny, nz), temp0)
+vturb = 792 * np.sqrt(tgas)  
 
 #-------------MAIN MODEL SETUP DONE----------------
 #-------------EMITTING SPECIES----------------
