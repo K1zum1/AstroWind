@@ -14,8 +14,9 @@ Ensure the following requirements are met:
 
 Compile `radmc3d` if not already compiled.
 Navigate to the directory containing the setup files.
-Run the setup script:
+Run the setup script for the model and the grid:
 ```python
+python3 master.py
 python3 problem_setup.py
 ```
 
