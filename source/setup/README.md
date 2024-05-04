@@ -42,3 +42,8 @@ plotImage(a, log=True, maxlog=4, cmap=cm.hot, bunit='snu', dpc=140, arcsec=True)
 plt.savefig('output_image.png') 
 plt.close()
 ```
+
+To simplify this process a file named `executeWind` has been created in order to streamline this process.
+```python
+./executeWind 2 # add any number here to set the vkms
+```
