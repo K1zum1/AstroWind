@@ -1,16 +1,17 @@
 # Stellar Accretion Disk Winds Model
 
-This program simulates aspects of stellar accretion disk winds. Key computations involve detailed analyses of mass-loss rates, wind velocities (both azimuthal and poloidal components), and the cylindrical radius on a 3D Cartesian grid.
+This program simulates aspects of stellar accretion disk winds. Key computations involve detailed analyses of mass-loss rates, wind velocities (both azimuthal and poloidal components), and the cylindrical radius on a 3D Cartesian grid. 
 
 **Important:** This project is to be completed by June 2024.
 
 ## Prerequisites
 
-- Python
-- Jupyter Notebook (for `density_map.ipynb`)
-- Matplotlib
-- NumPy
-- SciPy
+- [Python](https://www.python.org/)
+- [Jupyter Notebook](https://jupyter.org/install)
+- [Matplotlib](https://matplotlib.org/stable/users/installing.html)
+- [NumPy](https://numpy.org/install/)
+- [SciPy](https://www.scipy.org/install.html)
+- [RADMC3D-2.0](https://github.com/dullemond/radmc3d-2.0)
 
 ## Setup and Execution
 
