@@ -13,13 +13,31 @@ Before you begin, ensure you have met the following requirements:
 
 To initiate the LTE3D model, follow these steps:
 
-1. **Compile RADMC3D**: If not already compiled, compile RADMC3D on your system.
-2. **Navigate to the Directory**: Navigate to the directory containing the setup files for the LTE3D model.
-3. **Run the Scripts**: Run the scripts in the order stated below. This is crucial for the correct execution of the model.
+1. If not already compiled, compile RADMC3D on your system.
+2. Navigate to the directory containing the setup files for the LTE3D model.
+3. Copy the files found in the setup directory, and paste them into the LTE3D model.
+4. Run the scripts in the order stated below. This is crucial for the correct execution of the model.
+
+## Prerequisites
+
+Before executing any code, ensure your model contains the following files:
+
+- `dustkappa_silicate.inp`
+- `Makefile`
+- `molecule_co.inp`
+- `problem_setup.py`
+- `velocityChannelmapper.py`
+- `master.py`
+- `newvel`
+
+These files are essential for the correct functioning of the model.
 
 ## Warning
+**The only file you should be modifying is parameters.py.**
 
-**If you change a paramter in parameters.py, you must rerun the setup again to see the new results** 
+**Modifying any other files may result in the program potentially do unexpected things.**
+
+**Only make changes to the model and setup if you know what to change**
 
 # Velocity Channel Map
 
@@ -28,6 +46,7 @@ Run the model to generate data, and the setup
 python3 master.py
 python3 problem_setup.py
 ```
+**Everytime you change a parameter in parameters.py, you must rerun the setup again to see the new results**
 
 ```bash
 radmc3d mctherm setthreads <number_of_threads> # replace <number_of_threads> with the desired number
@@ -52,6 +71,7 @@ Run the model to generate data, and the setup
 python3 master.py
 python3 problem_setup.py
 ```
+**Everytime you change a parameter in parameters.py, you must rerun the setup again to see the new results**
 
 For an image with an inclination of 80 degrees and a line velocity of 2 km/s:
 ```bash
@@ -71,3 +91,5 @@ Go into python (don't forget the --matplotlib):
  a=readImage()
  plotImage(a,log=True,maxlog=4,cmap=cm.hot,bunit='snu',dpc=140,arcsec=True)
  ```
+
+ ![alt text](sampleDensity.png)
