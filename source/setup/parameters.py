@@ -4,6 +4,7 @@ from radmc3dPy.natconst import *
 # Astronomical Constants
 AU = 1.493e13  # Astronomical unit in kilometers
 MS = 1.99e+33   # Solar mass in grams
+RS = 6.96e10   # Solar radius in cm
 MU = 2.3e-24    # Mean molecular weight in grams
 
 # Star Parameters
@@ -22,7 +23,7 @@ r_out = 10 * AU  # Outer boundary radius
 k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2)))
 
 # Monte Carlo parameters
-nphot = 1000000
+nphot = 1e7
 
 # Grid parameters
 nx, ny, nz = 64, 64, 64
@@ -38,8 +39,8 @@ dusttogas = 0.001
 vturb0 = 1 * 1e5
 
 # Star parameters from constants file
-mstar = ms
-rstar = rs
+mstar = MS
+rstar = 2 * RS  
 tstar = 5500  
 pstar = np.array([0., 0., 0.])
 
