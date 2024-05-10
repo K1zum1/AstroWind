@@ -1,20 +1,49 @@
 # LTE3D Setup Guide
 
-This setup guide is designed for the LTE3D project, which uses data from the [Disc-Wind-Density-Program](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/parameters/wind_density_output.csv) to generate visual outputs with RADMC3D.
+This setup guide is designed for the LTE3D project. The project uses data from the [Disc-Wind-Density-Program (DWDP)](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/parameters/wind_density_output.csv) to generate visual outputs with RADMC3D.
 
 ## Prerequisites
 
-Ensure the following requirements are met:
-- RADMC3D compiled and ready on your system
-- You are able to generate data through the DWDP program
+Before you begin, ensure you have met the following requirements:
+
+- **RADMC3D**: Ensure RADMC3D is compiled and ready on your system.
+- **Disc-Wind-Density-Program Data**: You should be able to generate data through the DWDP program.
 
 ## Installation and Execution
 
-**To initiate the LTE3D model:**
+To initiate the LTE3D model, follow these steps:
 
-Compile `radmc3d` if not already compiled.
-Navigate to the directory containing the setup files.
-Run the setup script for the model and the grid:
+1. **Compile RADMC3D**: If not already compiled, compile RADMC3D on your system.
+2. **Navigate to the Directory**: Navigate to the directory containing the setup files for the LTE3D model.
+3. **Run the Scripts**: Run the scripts in the order stated below. This is crucial for the correct execution of the model.
+
+## Warning
+
+**If you change a paramter in parameters.py, you must rerun the setup again to see the new results** 
+
+# Velocity Channel Map
+
+Run the model to generate data, and the setup
+```python
+python3 master.py
+python3 problem_setup.py
+```
+
+```bash
+radmc3d mctherm setthreads <number_of_threads> # replace <number_of_threads> with the desired number
+```
+
+```bash
+./newvel <number1> <number2> # replace <number1> and <number2> with the desired numbers
+```
+
+```python
+python3 velocityChannelmapper.py
+```
+
+# View a single image
+
+Run the model to generate data, and the setup
 ```python
 python3 master.py
 python3 problem_setup.py
@@ -28,22 +57,13 @@ For an image at 1300 microns with an inclination of 70 degrees and azimuthal ang
 ```bash
 radmc3d image lambda 1300 incl 70 phi 30
 ```
+To read the image do the following
 
-Windows users can plot using Python if CLI issues arise:
+Go into python (don't forget the --matplotlib):
 
 ```python
-import matplotlib
-matplotlib.use('Agg')
-from radmc3dPy.image import *
-import matplotlib.pyplot as plt
-from matplotlib import cm
-a = readImage()
-plotImage(a, log=True, maxlog=4, cmap=cm.hot, bunit='snu', dpc=140, arcsec=True)
-plt.savefig('output_image.png') 
-plt.close()
-```
-
-To simplify this process a file named `executeWind` has been created in order to streamline this process.
-```python
-./executeWind 2 # add any number here to set the vkms
-```
+ from radmc3dPy.image import *
+ from matplotlib import cm
+ a=readImage()
+ plotImage(a,log=True,maxlog=4,cmap=cm.hot,bunit='snu',dpc=140,arcsec=True)
+ ```
