@@ -60,7 +60,7 @@ radmc3d mctherm setthreads <number_of_threads> # replace <number_of_threads> wit
 python3 velocityChannelmapper.py
 ```
 
-A successful execution should yield an image as such:
+A successful execution should yield an image named `velocity_channel_visualization.png` as such:
 
 ![alt text](sampleChannel.png)
 
