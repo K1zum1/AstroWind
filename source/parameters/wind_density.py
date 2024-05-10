@@ -52,5 +52,9 @@ try:
     np.savetxt(output_path_temp0, temp0_array, delimiter=",", header="Temp0", comments="")
 
     print("The simulation has been successfully executed and the results have been saved.")
+    print("The results are saved in the following files:")
+    print("1. wind_density_output.csv")
+    print("2. wind_output.csv")
+    print("3. temp0_output.csv")
 except Exception as e:
     print("An error occurred during the simulation:", str(e))
