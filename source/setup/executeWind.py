@@ -1,14 +1,14 @@
-python3 master.py
-python3 problem_setup.py
-
-radmc3d image iline 6 incl 80 vkms $1
 
 import matplotlib
 from radmc3dPy.image import *
 import matplotlib.pyplot as plt
 from matplotlib import cm
-matplotlib.use('Agg')
+
+fig1=plt.figure()
+plt.ioff()
+
 a = readImage()
-plotImage(a, log=True, maxlog=4, cmap.cm.hot, bunit='snu', dpc=140, arcsec=True)
-plt.savefig('output_image.png')
+result = plotImage(a, log=True, maxlog=4,fig=fig1, cmap=cm.hot, bunit='snu', dpc=140, arcsec=True)
+
+plt.savefig('output_1.png')
 plt.close()
