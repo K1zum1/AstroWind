@@ -7,6 +7,8 @@ vp_data = "wind_output.csv"
 vp = np.loadtxt(vp_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
 rhogas_data = "wind_density_output.csv"
 rhogas = np.loadtxt(rhogas_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
+temp_data = "temp0_output.csv"
+temp0 = np.loadtxt(temp_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
 
 # Meshgrid
 X, Y, Z = np.meshgrid(xc, yc, zc)
@@ -23,7 +25,7 @@ Vz = vp * np.sin(tan_z_r)
 
 # Other calculations
 rhod = rhogas * dusttogas
-tgas = np.full((nx, ny, nz), temp0)
+tgas = temp0
 vturb = 792 * np.sqrt(tgas)  
 
 # EMITTING SPECIES

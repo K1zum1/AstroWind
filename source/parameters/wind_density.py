@@ -23,6 +23,7 @@ try:
 
     output_path_source = "./visualize/wind_density_output.csv"
     output_path_setup = "./setup/wind_density_output.csv"
+    output_path_temp0 = "./setup/temp0_output.csv"
 
     np.savetxt(output_path_source, density_flattened, delimiter=",", header="Density", comments="")
     np.savetxt(output_path_setup, density_flattened, delimiter=",", header="Density", comments="")
@@ -48,7 +49,7 @@ try:
                     density_in_au3 = format_number(density[i, j, k], is_decimal=False)
                     f.write(f"| {x_in_au} | {y_in_au} | {z_in_au} | {density_in_au3} |\n")
     temp0_array = np.full((262144,), temp0)
-    np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
+    np.savetxt(output_path_temp0, temp0_array, delimiter=",", header="Temp0", comments="")
 
     print("The simulation has been successfully executed and the results have been saved.")
 except Exception as e:
