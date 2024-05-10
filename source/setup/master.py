@@ -58,6 +58,9 @@ try:
     np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
     vp_flat = vp_wi_l.flatten()
     np.savetxt("wind_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
+    temp0_array = np.full((262144,), temp0)
+    np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
+    
 
     print("The simulation has been successfully executed and the results have been saved.")
 except Exception as e:

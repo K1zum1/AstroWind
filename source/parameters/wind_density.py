@@ -47,6 +47,8 @@ try:
                     z_in_au = format_number(Z[i, j, k] / AU, is_decimal=True)
                     density_in_au3 = format_number(density[i, j, k], is_decimal=False)
                     f.write(f"| {x_in_au} | {y_in_au} | {z_in_au} | {density_in_au3} |\n")
+    temp0_array = np.full((262144,), temp0)
+    np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
 
     print("The simulation has been successfully executed and the results have been saved.")
 except Exception as e:
