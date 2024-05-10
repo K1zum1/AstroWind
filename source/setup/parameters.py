@@ -38,8 +38,8 @@ dusttogas = 0.001
 vturb0 = 1 * 1e5
 
 # Star parameters from constants file
-mstar = MS
-rstar = 2 * MS  
+mstar = ms
+rstar = rs
 tstar = 5500  
 pstar = np.array([0., 0., 0.])
 
