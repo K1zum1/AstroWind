@@ -1,4 +1,4 @@
-# Coordinate System and Stellar Wind Simulation
+# Stellar Wind Density Simulation
 
 This Python script defines a 3D coordinate system and performs a simulation of stellar wind, calculating the wind density, velocity, and temperature. The results are saved to CSV files.
 
