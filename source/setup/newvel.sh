@@ -1,3 +1,4 @@
+rm ./velocity_channels/image*.out
 for (( i=$1; i<=$2; ++i ))
 do
   echo $i
