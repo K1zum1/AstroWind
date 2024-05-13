@@ -1,8 +1,7 @@
 import numpy as np
 from parameters import *
 
-def coordinate_system():
-    d = -5 * AU
+def coordinate_system(d):
     x_values = np.linspace(-64, 64, 64) * AU
     y_values = np.linspace(-64, 64, 64) * AU
     z_values = np.linspace(-64, 64, 64) * AU
@@ -47,7 +46,7 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
 
 try:
-    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
+    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
     m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
     delta = calculate_angle(R_plane, z_values)
