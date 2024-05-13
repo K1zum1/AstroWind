@@ -36,4 +36,4 @@ Follow these steps to compute and view the density map:
 Upon successful execution with correctly defined parameters, you should observe a cone-like structure radiating outwards in the density map. If this is not the case, please double-check your parameters to ensure they align with the expected measurements. After running it through RADMC3D, we should see a double conelike structure.
 
 ![Density Map Output](example.png)
-![RADMC3D Output](radmc3d.png)
+
