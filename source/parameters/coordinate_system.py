@@ -2,8 +2,7 @@ import numpy as np
 from parameters import *
 
 
-def coordinate_system():
-    d = -5 * AU
+def coordinate_system(d):
     x_values = np.linspace(-64, 64, 64) * AU
     y_values = np.linspace(-64, 64, 64) * AU
     z_values = np.linspace(-64, 64, 64) * AU

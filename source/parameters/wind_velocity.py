@@ -2,7 +2,7 @@ import numpy as np
 from parameters import *
 from coordinate_system import *
 
-R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
+R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
 
 
 def get_source_point(R_plane, z_values, d):

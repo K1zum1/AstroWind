@@ -1,12 +1,12 @@
 import numpy as np
-from parameters import *
+from parameters import *  
 from coordinate_system import coordinate_system
 from wind_velocity import calculate_vp, get_source_point
 from mass_loss import calculate_mass_loss_rate
 from angle import calculate_angle
 
 try:
-    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system()
+    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
     m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
     delta = calculate_angle(R_plane, z_values)
