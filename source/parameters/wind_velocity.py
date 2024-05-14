@@ -25,7 +25,7 @@ output_path = "./visualize/wind_output.csv"
 
 vp_flat = vp.flatten()
 np.savetxt(output_path, vp_flat, delimiter=",", header="Velocity", comments="")
-print("Wind velcoity has been computed and saved to  wind_output.csv")
+print("Wind velocity has been computed and saved to  wind_output.csv")
 
 
 def format_number(number, is_decimal=False):

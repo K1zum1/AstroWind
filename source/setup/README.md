@@ -1,6 +1,6 @@
 # LTE3D Setup Guide
 
-This setup guide is designed for the LTE3D project. The project uses data from the [Disc-Wind-Density-Program (DWDP)](https://github.com/K1zum1/Disc-Wind-Density-Program/blob/main/source/parameters/wind_density_output.csv) to generate visual outputs with RADMC3D.
+This setup guide is designed for the LTE3D project. The project uses data from the [Disc-Wind-Density-Program (DWDP)](https://github.com/K1zum1/Disc-Wind-Density-Program) to generate visual outputs with RADMC3D.
 
 ## Prerequisites
 
