@@ -56,17 +56,17 @@ try:
 
     density_flattened = density.flatten()
     np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
+    print("Wind density has been computed and saved to wind_density_output.csv")
+    
     vp_flat = vp_wi_l.flatten()
-    np.savetxt("wind_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
+    np.savetxt("wind_velocity_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
+    print("Wind velocity has been computed and saved to  wind_output.csv")
+
     temp0_array = np.full((262144,), temp0)
     np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
+    print("Wind temperature has been computed and saved to  temp0_output.csv")
     
 
-    print("The simulation has been successfully executed and the results have been saved.")
-    print("The results are saved in the following files:")
-    print("1. wind_density_output.csv")
-    print("2. wind_output.csv")
-    print("3. temp0_output.csv")
-    
+    print("The simulation has been successfully executed and the results have been saved.")    
 except Exception as e:
     print("An error occurred during the simulation:", str(e))

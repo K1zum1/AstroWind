@@ -3,7 +3,7 @@ from parameters import *
 from radmc3dPy.natconst import *
 
 # Load data
-vp_data = "wind_output.csv"
+vp_data = "wind_velocity_output.csv"
 vp = np.loadtxt(vp_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)
 rhogas_data = "wind_density_output.csv"
 rhogas = np.loadtxt(rhogas_data, delimiter=",", skiprows=1).reshape(nx, ny, nz)

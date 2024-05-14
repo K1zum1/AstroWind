@@ -20,11 +20,12 @@ def calculate_vp(d, GM_star, lmbda, r_base):
 
 vp = calculate_vp(d, GM_star, lmbda, r_base)
 
-output_path = "./setup/wind_output.csv"
+output_path = "./visualize/wind_output.csv"
 
 
 vp_flat = vp.flatten()
 np.savetxt(output_path, vp_flat, delimiter=",", header="Velocity", comments="")
+print("Wind velcoity has been computed and saved to  wind_output.csv")
 
 
 def format_number(number, is_decimal=False):

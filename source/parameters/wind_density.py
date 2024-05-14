@@ -14,19 +14,20 @@ try:
 
     def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
         abs_cos_delta = np.abs(np.cos(delta))
-        return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (
-            np.abs(d) / (D_wi_l * abs_cos_delta)
-        ) ** 2
+        return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
 
     density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
     density_flattened = density.flatten()
+    temp0_array = np.full((262144,), temp0)
 
     output_path_source = "./visualize/wind_density_output.csv"
-    output_path_setup = "./setup/wind_density_output.csv"
-    output_path_temp0 = "./setup/temp0_output.csv"
+    output_path_temp0 = "./visualize/temp0_output.csv"
 
     np.savetxt(output_path_source, density_flattened, delimiter=",", header="Density", comments="")
-    np.savetxt(output_path_setup, density_flattened, delimiter=",", header="Density", comments="")
+    print("Wind density has been computed and saved to wind_density_output.csv")
+
+    np.savetxt(output_path_temp0, temp0_array, delimiter=",", header="Temp0", comments="")
+    print("Wind temperature has been computed and saved to  temp0_output.csv")
 
     shape = density.shape
     markdown_table_path = "./dataset/check_density_values.md"
@@ -48,13 +49,7 @@ try:
                     z_in_au = format_number(Z[i, j, k] / AU, is_decimal=True)
                     density_in_au3 = format_number(density[i, j, k], is_decimal=False)
                     f.write(f"| {x_in_au} | {y_in_au} | {z_in_au} | {density_in_au3} |\n")
-    temp0_array = np.full((262144,), temp0)
-    np.savetxt(output_path_temp0, temp0_array, delimiter=",", header="Temp0", comments="")
 
     print("The simulation has been successfully executed and the results have been saved.")
-    print("The results are saved in the following files:")
-    print("1. wind_density_output.csv")
-    print("2. wind_output.csv")
-    print("3. temp0_output.csv")
 except Exception as e:
     print("An error occurred during the simulation:", str(e))
