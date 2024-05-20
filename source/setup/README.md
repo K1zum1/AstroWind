@@ -62,7 +62,7 @@ python3 velocityChannelmapper.py
 
 A successful execution should yield an image named `velocity_channel_visualization.png` as such:
 
-![alt text](sampleChannel.png)
+![alt text](samples/sampleChannel.png)
 
 # View a single image
 
@@ -92,4 +92,4 @@ Go into python (don't forget the --matplotlib):
  plotImage(a,log=True,maxlog=4,cmap=cm.hot,bunit='snu',dpc=140,arcsec=True)
  ```
 
- ![alt text](sampleDensity.png)
+![alt text](samples/sampleDensity.png)
