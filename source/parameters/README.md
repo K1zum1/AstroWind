@@ -9,15 +9,20 @@ This Python script defines a 3D coordinate system and performs a simulation of s
 
 ## Output
 
-The script will perform the simulation and save the results to the following CSV files:
+### The script will perform the simulation and save the results to the following CSV files:
 
 1. `wind_density_output.csv`: Contains the calculated wind density.
 2. `wind_output.csv`: Contains the calculated wind velocity.
 3. `temp0_output.csv`: Contains the calculated temperature.
 
+### The script will also output some files for the purpose of data verification:
+
+1. `check_density_values.md`
+2. `check_velocity_values.md`
+
 ## Functions
 
-The script contains several functions:
+The directory contains several functions, each necessary for proper calculation.
 
 - `coordinate_system()`: Defines a 3D coordinate system.
 - `calculate_angle()`: Calculates the angle between the plane and the z-axis.
