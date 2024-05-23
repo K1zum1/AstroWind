@@ -19,8 +19,7 @@ p = 3.4959999999999996  # Exponent in mass loss rate calculation
 # Radial Boundaries for Mass Loss Calculation
 r_in = 5 * AU  # Inner boundary radius
 r_out = 10 * AU  # Outer boundary radius
-
-k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2)))
+k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2))) # Porportionality constant for mass loss rate
 
 # Monte Carlo parameters
 nphot = 1e7
