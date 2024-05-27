@@ -70,6 +70,7 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
 
 # Main Execution
 try:
+    # Call all the functions to calculate the wind density
     R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
     m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
@@ -77,6 +78,7 @@ try:
     D_wi_l = get_source_point(R_plane, z_values, d)
     density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
 
+    # Save the results to CSV files
     density_flattened = density.flatten()
     np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
     print("Wind density has been computed and saved to wind_density_output.csv")
@@ -89,7 +91,6 @@ try:
     np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
     print("Wind temperature has been computed and saved to  temp0_output.csv")
     
-
     print("The simulation has been successfully executed and the results have been saved.")    
 except Exception as e:
     print("An error occurred during the simulation:", str(e))
