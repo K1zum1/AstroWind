@@ -15,6 +15,7 @@ M_dot_w = 1e17  # Wind mass loss rate
 lmbda = 1.6     # Alfven lever parameter
 d = -5 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
+temp0 = 30
 
 # Radial Boundaries for Mass Loss Calculation
 r_in = 5 * AU  # Inner boundary radius
@@ -33,7 +34,6 @@ sizez = 100 * AU
 # Model parameters
 omega = 2 * np.pi / (50 * year)
 rhogas0 = 1e-16
-temp0 = 30
 dusttogas = 0.001
 vturb0 = 1 * 1e5
 
