@@ -4,6 +4,7 @@ from coordinate_system import coordinate_system
 from wind_velocity import calculate_vp, get_source_point
 from mass_loss import calculate_mass_loss_rate
 from angle import calculate_angle
+from temperature import calculate_temperature
 
 try:
     R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
@@ -11,6 +12,7 @@ try:
     m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
     delta = calculate_angle(R_plane, z_values)
     D_wi_l = get_source_point(R_plane, z_values, d)
+    temp0 = calculate_temperature(r_base, z_values)
 
     def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
         abs_cos_delta = np.abs(np.cos(delta))
@@ -18,7 +20,7 @@ try:
 
     density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
     density_flattened = density.flatten()
-    temp0_array = np.full((262144,), temp0)
+    temp0_array = temp0.flatten()
 
     output_path_source = "./visualize/wind_density_output.csv"
     output_path_temp0 = "./visualize/temp0_output.csv"
