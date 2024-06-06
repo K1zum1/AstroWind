@@ -13,7 +13,7 @@ M_dot_w = 1e17  # Wind mass loss rate
 lmbda = 1.6     # Alfven lever parameter
 d = -5 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
-temp0 = 30
+temp0 = 30 # Temperature of the wind
 
 # Radial Boundaries for Mass Loss Calculation
 r_in = 5 * AU  # Inner boundary radius
