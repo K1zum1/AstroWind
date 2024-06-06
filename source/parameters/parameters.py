@@ -6,7 +6,7 @@ MS = 1.99e+33   # Solar mass in grams
 MU = 2.3e-24    # Mean molecular weight in grams
 
 # Star Parameters
-GM_star = 1.334e26  # Gravitational parameter for the star
+GM_star = 1.334e26  # Gravitational parameter of the star
 
 # Wind Parameters
 M_dot_w = 1e17  # Wind mass loss rate
