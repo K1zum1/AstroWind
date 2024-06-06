@@ -33,6 +33,11 @@ def calculate_angle(R_plane, z_values):
     delta = np.pi / 2 - np.arctan(m1)
     return delta
 
+# Function to calculate the temperature (preliminary, based only on r and z)
+def calculate_temperature(r_base, z_values):
+    T = 1000*(0.1*AU/abs(r_base))*((abs(r_base)/abs(z_values))**0.5)
+    return T
+
 # Function to calculate the mass loss rate
 def calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k):
     # Initialize mass loss rate array
@@ -77,6 +82,7 @@ try:
     delta = calculate_angle(R_plane, z_values)
     D_wi_l = get_source_point(R_plane, z_values, d)
     density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
+    temp0 = calculate_temperature(r_base, z_values)
 
     # Save the results to CSV files
     density_flattened = density.flatten()
@@ -87,7 +93,7 @@ try:
     np.savetxt("wind_velocity_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
     print("Wind velocity has been computed and saved to  wind_output.csv")
 
-    temp0_array = np.full((262144,), temp0)
+    temp0_array = temp0.flatten()
     np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
     print("Wind temperature has been computed and saved to  temp0_output.csv")
     
