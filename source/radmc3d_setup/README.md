@@ -51,11 +51,19 @@ python3 problem_setup.py
 ```bash
 radmc3d mctherm setthreads <number_of_threads> # replace <number_of_threads> with the desired number
 ```
-
+Create a directory called velocity_channels for the newvel function
+```bash
+mkdir velocity_channels
+``` 
+If you run into permission issues, run the following
+```bash
+chmod +x newvel
+```
+This function will generate the image,out* files into the specified directory
 ```bash
 ./newvel <number1> <number2> # replace <number1> and <number2> with the desired numbers
 ```
-
+This will then generate the image
 ```python
 python3 velocityChannelmapper.py
 ```
@@ -63,6 +71,8 @@ python3 velocityChannelmapper.py
 A successful execution should yield an image named `velocity_channel_visualization.png` as such:
 
 ![alt text](samples/sampleChannel.png)
+
+Anytime you want to rerun `newvel`, the `velocity_channel_visualization.png` will be overwritten so please save the image if you need it later.
 
 # View a single image
 
@@ -86,10 +96,12 @@ To read the image do the following
 Go into python (don't forget the --matplotlib):
 
 ```python
- from radmc3dPy.image import *
- from matplotlib import cm
- a=readImage()
- plotImage(a,log=True,maxlog=4,cmap=cm.hot,bunit='snu',dpc=140,arcsec=True)
- ```
+from radmc3dPy.image import *
+from matplotlib import cm
+a=readImage()
+plotImage(a,log=True,maxlog=4,cmap=cm.hot,bunit='snu',dpc=140,arcsec=True)
+```
+
+Alternatively you can also run `executeWind.py` which will also save and show an image
 
 ![alt text](samples/sampleDensity.png)
