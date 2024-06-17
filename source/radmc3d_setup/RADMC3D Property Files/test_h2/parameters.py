@@ -2,7 +2,7 @@ import numpy as np
 from radmc3dPy.natconst import *
 
 # Astronomical Constants
-AU = 1.493e13  # Astronomical unit in kilometers
+AU = 1.493e13  # Astronomical unit in centimeters
 MS = 1.99e+33   # Solar mass in grams
 RS = 6.96e10   # Solar radius in cm
 MU = 2.3e-24    # Mean molecular weight in grams
@@ -11,7 +11,7 @@ MU = 2.3e-24    # Mean molecular weight in grams
 GM_star = 1.334e26  # Gravitational parameter for the star
 
 # Wind Parameters
-M_dot_w = 1e17  # Wind mass loss rate
+M_dot_w = (1e7)*MS  # Wind mass loss rate
 lmbda = 1.6     # Alfven lever parameter
 d = -5 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
