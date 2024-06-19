@@ -41,6 +41,8 @@ This project was completed by myself for the SETI Spring 2024 internship, under 
 I would like to express my deepest appreciation to Dr. Gorti for her guidance and support throughout the 
 course of this project. 
 
+As of June 2024, this project will be maintained by Sophie Clark as part of the SETI Institute 2024 REU Program. 
+
 ## Contributing
 
 Any contributions you make are **greatly appreciated**. I have left many remarks on the code
