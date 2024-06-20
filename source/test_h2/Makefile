@@ -1,5 +1,5 @@
 cleanmodel:
-	@rm -f	*.dat *.out *.info *.used                           \
+	@rm -f	*.dat *.out *.info *.used *.png                     \
 	   wavelength_micron.inp dustopac.inp dust_density.inp      \
 	   dust_density.uinp *.uout *.udat numberdens_*inp          \
 	   amr_grid.inp stars.inp radmc3d.inp gas_temperature.*inp  \
@@ -7,7 +7,7 @@ cleanmodel:
 	@echo All .out files and most .inp files removed.
 
 cleanall:
-	@rm -f	*.o *.mod *.pyc *.dat *.out *.info *.csv *.used     \
+	@rm -f	*.o *.mod *.dat *.out *.info *.csv *.pyc *.used     \
 	   wavelength_micron.inp dustopac.inp dust_density.inp      \
 	   dust_density.uinp *.uout *.udat numberdens_*inp          \
 	   amr_grid.inp stars.inp radmc3d.inp image_script.pro      \
