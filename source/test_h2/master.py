@@ -4,9 +4,9 @@ from parameters import *
 # Function to create a coordinate system
 def coordinate_system(d):
     # Define x, y, z values in astronomical units
-    x_values = np.linspace(-64, 64, 64) * AU
-    y_values = np.linspace(-64, 64, 64) * AU
-    z_values = np.linspace(-64, 64, 64) * AU
+    x_values = np.linspace(-64, 64, nx) * AU
+    y_values = np.linspace(-64, 64, ny) * AU
+    z_values = np.linspace(-64, 64, nz) * AU
 
     # Remove zero values from x, y, z arrays
     x_values = x_values[x_values != 0]
@@ -86,8 +86,9 @@ try:
     vp_flat = vp_wi_l.flatten()
     np.savetxt("wind_velocity_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
     print("Wind velocity has been computed and saved to  wind_output.csv")
-
-    temp0_array = np.full((262144,), temp0)
+	
+    array_size = nx*ny*nz
+    temp0_array = np.full((array_size,), temp0)
     np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
     print("Wind temperature has been computed and saved to  temp0_output.csv")
     
