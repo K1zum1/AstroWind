@@ -18,8 +18,8 @@ p = 3.4959999999999996  # Exponent in mass loss rate calculation
 temp0 = 3000 # Temperature of the wind
 
 # Radial Boundaries for Mass Loss Calculation
-r_in = 5 * AU  # Inner boundary radius
-r_out = 10 * AU  # Outer boundary radius
+r_in = 40 * AU  # Inner boundary radius
+r_out = 80 * AU  # Outer boundary radius
 k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2))) # Proportionality constant for mass loss rate
 
 # Monte Carlo parameters
@@ -27,9 +27,9 @@ nphot = 1e7
 
 # Grid parameters
 nx, ny, nz = 128, 128, 128 #64, 64, 64
-sizex = 64 * AU
-sizey = 64 * AU
-sizez = 64 * AU
+sizex = 150 * AU
+sizey = 150 * AU
+sizez = 150 * AU
 
 # Model parameters
 omega = 2 * np.pi / (50 * year)

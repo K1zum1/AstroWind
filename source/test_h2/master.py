@@ -4,9 +4,10 @@ from parameters import *
 # Function to create a coordinate system
 def coordinate_system(d):
     # Define x, y, z values in astronomical units
-    x_values = np.linspace(-64, 64, nx) * AU
-    y_values = np.linspace(-64, 64, ny) * AU
-    z_values = np.linspace(-64, 64, nz) * AU
+    lims = sizex/AU
+    x_values = np.linspace(-lims, lims, nx) * AU
+    y_values = np.linspace(-lims, lims, ny) * AU
+    z_values = np.linspace(-lims, lims, nz) * AU
 
     # Remove zero values from x, y, z arrays
     x_values = x_values[x_values != 0]
