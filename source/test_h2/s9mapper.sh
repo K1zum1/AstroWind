@@ -1,4 +1,3 @@
-cd Disc-Wind-Density-Program/source/test_h2
 python3 master.py
 python3 problem_setup.py
 radmc3d mctherm setthreads 4
