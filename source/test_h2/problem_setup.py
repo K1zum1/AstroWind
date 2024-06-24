@@ -162,7 +162,7 @@ try:
     with open('radmc3d.inp','w+') as f:
         f.write('nphot = %d\n'%(nphot))
         f.write('scattering_mode_max = 0\n')   # Put this to 1 for isotropic scattering
-        f.write('tgas_eq_tdust   = 1')
+        f.write('tgas_eq_tdust   = 0')
     print("radmc3d.inp written successfully.")
 except Exception as e:
     print(f"Error writing radmc3d.inp: {e}")
