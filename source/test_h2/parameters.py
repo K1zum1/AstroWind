@@ -15,7 +15,7 @@ M_dot_w = 1e20  # Wind mass loss rate
 lmbda = 1.6     # Alfven lever parameter
 d = -5 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
-temp0 = 10000 # Temperature of the wind
+temp0 = 3000 # Temperature of the wind
 
 # Radial Boundaries for Mass Loss Calculation
 r_in = 5 * AU  # Inner boundary radius
@@ -26,10 +26,10 @@ k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2))) # Propo
 nphot = 1e7
 
 # Grid parameters
-nx, ny, nz = 128, 128, 128 #256, 256, 256
-sizex = 125 * AU
-sizey = 125 * AU
-sizez = 125 * AU
+nx, ny, nz = 64, 64, 64
+sizex = 100 * AU
+sizey = 100 * AU
+sizez = 100 * AU
 
 # Model parameters
 omega = 2 * np.pi / (50 * year)
