@@ -13,7 +13,7 @@ GM_star = 6.674e25  # Gravitational parameter for the star
 # Wind Parameters
 M_dot_w = 1e20  # Wind mass loss rate
 lmbda = 1.6     # Alfven lever parameter
-d = -5 * AU     # Distance for wind source point calculation
+d = -15 * AU     # Distance for wind source point calculation
 p = 3.4959999999999996  # Exponent in mass loss rate calculation
 temp0 = 3000 # Temperature of the wind
 
@@ -27,9 +27,9 @@ nphot = 1e7
 
 # Grid parameters
 nx, ny, nz = 64, 64, 64
-sizex = 100 * AU
-sizey = 100 * AU
-sizez = 100 * AU
+sizex = 300 * AU
+sizey = 300 * AU
+sizez = 300 * AU
 
 # Model parameters
 omega = 2 * np.pi / (50 * year)
