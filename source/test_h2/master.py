@@ -56,7 +56,7 @@ def get_source_point(R_plane, z_values, d):
 # Function to calculate the poloidal velocity
 def calculate_vp(d, GM_star, lmbda, r_base):
     # Calculate the factor used in the velocity equation
-    factor = (2 * lmbda - 3) * 3
+    factor = (2 * lmbda - 3)
     # Check if the factor is less than 0, which would cause a math error
     if factor < 0:
         raise ValueError("Invalid value of lambda causing sqrt of negative number")
