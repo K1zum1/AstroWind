@@ -27,7 +27,7 @@ try:
 
     rhod = rhogas * dusttogas
     tgas = temp0
-    vturb = 792 * np.sqrt(tgas)
+    vturb = 6427.0 * np.sqrt(tgas)
 
     abunh2 = 1e-3
     facth2 = abunh2/(2.3*mp)

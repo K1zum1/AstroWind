@@ -32,7 +32,7 @@ sizey = 300 * AU
 sizez = 300 * AU
 
 # Model parameters
-omega = 2 * np.pi / (50 * year)
+#omega = 2 * np.pi / (50 * year)
 rhogas0 = 1e-16
 dusttogas = 1e-6
 vturb0 = 1 * 1e5
@@ -44,8 +44,9 @@ tstar = 5500
 pstar = np.array([0., 0., 0.])
 
 # Wavelength settings
+# create lambda array for radiative transfer
 lam1, lam2, lam3, lam4 = 0.1, 7.0, 25.0, 10000.0
-n12, n23, n34 = 20, 100, 30
+n12, n23, n34 = 100, 30, 30
 lam12 = np.logspace(np.log10(lam1), np.log10(lam2), n12, endpoint=False)
 lam23 = np.logspace(np.log10(lam2), np.log10(lam3), n23, endpoint=False)
 lam34 = np.logspace(np.log10(lam3), np.log10(lam4), n34, endpoint=True)
