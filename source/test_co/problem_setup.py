@@ -29,23 +29,23 @@ try:
     tgas = temp0
     vturb = 6427.0 * np.sqrt(tgas)
 
-    abunh2 = 1e-4
-    facth2 = abunh2/(2.3*mp)
-    nh2 = rhogas*facth2
+    abunco = 1e-4
+    factco = abunco/(2.3*mp)
+    nco = rhogas*factco
     print("Calculations completed successfully.")
 except Exception as e:
     print(f"Error in calculations: {e}")
 
 try:
-    with open('numberdens_h2.inp','w+') as f:
+    with open('numberdens_co.inp','w+') as f:
         f.write('1\n')                       # Format number
         f.write('%d\n'%(nx*ny*nz))           # Nr of cells
-        data = nh2.ravel(order='F')          # Create a 1-D view, fortran-style indexing
+        data = nco.ravel(order='F')          # Create a 1-D view, fortran-style indexing
         data.tofile(f, sep='\n', format="%13.6e")
         f.write('\n')
-    print("numberdens_h2.inp written successfully.")
+    print("numberdens_co.inp written successfully.")
 except Exception as e:
-    print(f"Error writing numberdens_h2.inp: {e}")
+    print(f"Error writing numberdens_co.inp: {e}")
 
 try:
     with open('amr_grid.inp','w+') as f:
@@ -151,9 +151,9 @@ except Exception as e:
 
 try:
     with open('lines.inp','w') as f:
-        f.write('2\n')
         f.write('1\n')
-        f.write('h2    leiden    0    0    0\n')
+        f.write('1\n')
+        f.write('co    leiden    0    0    0\n')
     print("lines.inp written successfully.")
 except Exception as e:
     print(f"Error writing lines.inp: {e}")
