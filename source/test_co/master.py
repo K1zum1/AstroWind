@@ -69,8 +69,8 @@ def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     # Calculate the absolute value of the cosine of the angle
     abs_cos_delta = np.abs(np.cos(delta))
     # Calculate the wind density
-    #return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
-    return np.full((64, 64, 64), 2.3e-18)
+    #return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_w  i_l * abs_cos_delta)) ** 2
+    return ((2.3e-18) / abs_cos_delta)*(np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
 
 # Main Execution
 try:

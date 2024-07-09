@@ -31,7 +31,8 @@ try:
 
     abunco = 1e-4
     factco = abunco/(2.3*mp)
-    nco = rhogas*factco
+    #nco = rhogas*factco
+    nco = np.full((64, 64, 64), 100)
     print("Calculations completed successfully.")
 except Exception as e:
     print(f"Error in calculations: {e}")
