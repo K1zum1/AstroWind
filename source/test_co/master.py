@@ -28,6 +28,20 @@ def coordinate_system(d):
 
     return R_values, y_values, R_plane, z_values, r_base, X, Y, Z
 
+def xyz(d):
+    limsx = 64 #int(sizex/(2*AU))
+    limsy = 64 #int(sizey/(2*AU))
+    limsz = 64 #int(sizez/(2*AU))
+    x_values = np.linspace(-limsx, limsx, nx) * AU
+    y_values = np.linspace(-limsy, limsy, ny) * AU
+    z_values = np.linspace(-limsz, limsz, nz) * AU
+
+    # Remove zero values from x, y, z arrays
+    x_values = x_values[x_values != 0]
+    y_values = y_values[y_values != 0]
+    z_values = z_values[z_values != 0]
+    return x_values
+
 # Function to calculate the angle
 def calculate_angle(R_plane, z_values):
     # Calculate the slope
@@ -65,22 +79,35 @@ def calculate_vp(d, GM_star, lmbda, r_base):
     return vp
 
 # Function to calculate the wind density
-def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
+#def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
     # Calculate the absolute value of the cosine of the angle
-    abs_cos_delta = np.abs(np.cos(delta))
+    #abs_cos_delta = np.abs(np.cos(delta))
     # Calculate the wind density
     #return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_w  i_l * abs_cos_delta)) ** 2
-    return ((2.3e-18) / abs_cos_delta)*(np.abs(d) / (D_wi_l * abs_cos_delta)) ** 2
+
+def wind_density(x_values, y_values, z_values, delta):
+    vals = np.full((nx, ny, nz), 0)
+    min_angle = 30 *np.pi/180
+    max_angle = 60 *np.pi/180
+    for i in range(0, len(x_values)):
+    	for j in range(0, len(y_values)):
+        	for k in range(0, len(z_values)):
+            		if (delta[i][j][k] >= min_angle) and (delta[i][j][k] <= max_angle):
+                		vals[i][j][k] = 1 #2.3e-18
+    return vals
 
 # Main Execution
 try:
     # Call all the functions to calculate the wind density
     R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
+
+    x_values = xyz(d)
+
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
     m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
     delta = calculate_angle(R_plane, z_values)
     D_wi_l = get_source_point(R_plane, z_values, d)
-    density = wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l)
+    density = wind_density(x_values, y_values, z_values, delta)
 
     # Save the results to CSV files
     density_flattened = density.flatten()
