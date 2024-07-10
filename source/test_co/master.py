@@ -2,70 +2,29 @@ import numpy as np
 from parameters import *
 
 # Function to create a coordinate system
-def coordinate_system(d):
-    # Define x, y, z values in astronomical units
-    limsx = 64 #int(sizex/(2*AU))
-    limsy = 64 #int(sizey/(2*AU))
-    limsz = 64 #int(sizez/(2*AU))
+def xyz(d):
+    limsx, limsy, limsz = 64, 64, 64
     x_values = np.linspace(-limsx, limsx, nx) * AU
     y_values = np.linspace(-limsy, limsy, ny) * AU
     z_values = np.linspace(-limsz, limsz, nz) * AU
 
-    # Remove zero values from x, y, z arrays
     x_values = x_values[x_values != 0]
     y_values = y_values[y_values != 0]
     z_values = z_values[z_values != 0]
 
-    # Create a 3D grid of x, y, z values
     X, Y, Z = np.meshgrid(x_values, y_values, z_values, indexing="ij")
 
-    # Calculate R_plane and R_values
     R_plane = np.sqrt(X**2 + Y**2)
     R_values = np.sqrt(X**2 + Y**2 + Z**2)
 
-    # Calculate r_base
     r_base = R_plane * np.abs(d) / (np.abs(d) + np.abs(z_values))
 
-    return R_values, y_values, R_plane, z_values, r_base, X, Y, Z
-
-def xyz(d):
-    limsx = 64 #int(sizex/(2*AU))
-    limsy = 64 #int(sizey/(2*AU))
-    limsz = 64 #int(sizez/(2*AU))
-    x_values = np.linspace(-limsx, limsx, nx) * AU
-    y_values = np.linspace(-limsy, limsy, ny) * AU
-    z_values = np.linspace(-limsz, limsz, nz) * AU
-
-    # Remove zero values from x, y, z arrays
-    x_values = x_values[x_values != 0]
-    y_values = y_values[y_values != 0]
-    z_values = z_values[z_values != 0]
-    return x_values
+    return x_values, y_values, z_values, R_values, R_plane, r_base, X, Y, Z
 
 # Function to calculate the angle
 def calculate_angle(R_plane, z_values):
-    # Calculate the slope
-    m1 = z_values / R_plane
-    # Calculate the angle
-    delta = np.pi / 2 - np.arctan(m1)
+    delta = (np.pi / 2) - np.arctan(z_values / R_plane)
     return delta
-
-# Function to calculate the mass loss rate
-def calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k):
-    # Initialize mass loss rate array
-    mass_loss_rate = np.zeros_like(r_base)
-    # Create a mask for values within the range [r_in, r_out]
-    mask = (r_base >= r_in) & (r_base <= r_out)
-    # If any values in the mask, calculate the mass loss rate
-    if np.any(mask):
-        mass_loss_rate[mask] = k * (R_plane[mask] ** p)
-    return mass_loss_rate
-
-# Function to calculate the source point
-def get_source_point(R_plane, z_values, d):
-    # Calculate D, the distance from the source point to any point in the space
-    D = np.sqrt(R_plane**2 + (np.abs(z_values) + np.abs(d)) ** 2)
-    return D
 
 # Function to calculate the poloidal velocity
 def calculate_vp(d, GM_star, lmbda, r_base):
@@ -78,37 +37,25 @@ def calculate_vp(d, GM_star, lmbda, r_base):
     vp = (np.sqrt(factor) * np.sqrt(GM_star)) / np.sqrt(r_base)
     return vp
 
-# Function to calculate the wind density
-#def wind_density(m_dot_wi, vp_wi_l, delta, d, D_wi_l):
-    # Calculate the absolute value of the cosine of the angle
-    #abs_cos_delta = np.abs(np.cos(delta))
-    # Calculate the wind density
-    #return (m_dot_wi / (vp_wi_l * abs_cos_delta)) * (np.abs(d) / (D_w  i_l * abs_cos_delta)) ** 2
-
 def wind_density(x_values, y_values, z_values, delta):
     abs_cos_delta = np.abs(np.cos(delta))
     vals = np.full((nx, ny, nz), 0)
     min_val = 0.73
     max_val = 0.75
     for i in range(0, nx):
-    	for j in range(0, ny):
-    		for k in range(0, nz):
-    			if ((abs_cos_delta[i,j,k] <= max_val) and (abs_cos_delta[i,j,k] >= min_val)):
-    				vals[i,j,k] = 1e6
+        for j in range(0, ny):
+                for k in range(0, nz):
+                        if ((abs_cos_delta[i,j,k] <= max_val) and (abs_cos_delta[i,j,k] >= min_val)):
+                                vals[i,j,k] = 1e6
     vals = vals*(2.3e-24)
     return vals
 
 # Main Execution
 try:
     # Call all the functions to calculate the wind density
-    R_values, y_values, R_plane, z_values, r_base, X, Y, Z = coordinate_system(d)
-
-    x_values = xyz(d)
-
+    x_values, y_values, z_values, R_values, R_plane, r_base, X, Y, Z = xyz(d)
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
-    m_dot_wi = calculate_mass_loss_rate(r_base, M_dot_w, p, r_in, r_out, R_plane, k)
     delta = calculate_angle(R_plane, z_values)
-    D_wi_l = get_source_point(R_plane, z_values, d)
     density = wind_density(x_values, y_values, z_values, delta)
 
     # Save the results to CSV files
@@ -119,7 +66,7 @@ try:
     vp_flat = vp_wi_l.flatten()
     np.savetxt("wind_velocity_output.csv", vp_flat, delimiter=",", header="Velocity", comments="")
     print("Wind velocity has been computed and saved to  wind_output.csv")
-	
+    
     array_size = nx*ny*nz
     temp0_array = np.full((array_size,), temp0)
     np.savetxt("temp0_output.csv", temp0_array, delimiter=",", header="Temp0", comments="")
