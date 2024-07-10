@@ -87,14 +87,9 @@ def calculate_vp(d, GM_star, lmbda, r_base):
 
 def wind_density(x_values, y_values, z_values, delta):
     vals = np.full((nx, ny, nz), 0)
-    min_angle = 44.5 *np.pi/180
-    max_angle = 45.5 *np.pi/180
-    for i in range(0, nx):
-    	for j in range(0, ny):
-        	for k in range(0, nz):
-            		if ((delta[i,j,k] >= min_angle) and (delta[i,j,k] <= max_angle)) or ((delta[i,j,k] >= (np.pi - max_angle)) and (delta[i,j,k] <= (np.pi - min_angle))):
-                		vals[i,j,k] = 1e6
-    vals*(2.3e-24)
+    min_angle = 30 *np.pi/18        	for k in range(0, len(z_values)):
+            		if (delta[i][j][k] >= min_angle) and (delta[i][j][k] <= max_angle):
+                		vals[i][j][k] = 1e-2 #2.3e-18
     return vals
 
 # Main Execution
