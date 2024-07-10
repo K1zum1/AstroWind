@@ -161,7 +161,7 @@ dA = (pixsize_x * pixsize_y)/((distance*3.086e18)**2) # size of each pixel in st
 image_data = img.image.flatten()
 total_flux = np.sum(image_data)*dA*1e23 #summed intensity converted to flux in Jy    
     
-result = plotImage2(img, flux=total_flux, log=True, maxlog=50, cmap=cm.hot, bunit='snu', dpc=distance, arcsec=True)
+result = plotImage2(img, flux=total_flux, log=True, maxlog=15, cmap=cm.hot, bunit='snu', dpc=distance, arcsec=True)
 
 plt.savefig('output.png')
 plt.close()

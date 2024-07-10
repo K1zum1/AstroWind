@@ -23,7 +23,7 @@ r_out = 10 * AU  # Outer boundary radius
 k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2))) # Proportionality constant for mass loss rate
 
 # Monte Carlo parameters
-nphot = 1e5
+nphot = 1e7
 
 # Grid parameters
 nx, ny, nz = 64, 64, 64
