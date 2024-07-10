@@ -93,7 +93,7 @@ def wind_density(x_values, y_values, z_values, delta):
     	for j in range(0, len(y_values)):
         	for k in range(0, len(z_values)):
             		if (delta[i][j][k] >= min_angle) and (delta[i][j][k] <= max_angle):
-                		vals[i][j][k] = 1 #2.3e-18
+                		vals[i][j][k] = 1e-2 #2.3e-18
     return vals
 
 # Main Execution
