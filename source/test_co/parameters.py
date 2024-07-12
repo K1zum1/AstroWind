@@ -26,7 +26,7 @@ k = ((p + 2) * M_dot_w) / (2 * np.pi * (r_out**(p + 2) - r_in**(p + 2))) # Propo
 nphot = 1e7
 
 # Grid parameters
-nx, ny, nz = 64, 64, 64
+nx, ny, nz = 128, 128, 128
 sizex = 300 * AU
 sizey = 300 * AU
 sizez = 300 * AU

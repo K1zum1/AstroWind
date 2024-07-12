@@ -159,7 +159,7 @@ pixsize_x, pixsize_y = img.sizepix_x, img.sizepix_y # pixel sizes in cm (radians
 dA = (pixsize_x * pixsize_y)/((distance*3.086e18)**2) # size of each pixel in steradians
 
 image_data = img.image.flatten()
-total_flux = np.sum(image_data)*dA*1e23 #summed intensity converted to flux in Jy    
+total_flux = np.sum(image_data) #*dA*1e23 #summed intensity converted to flux in Jy    
     
 result = plotImage2(img, flux=total_flux, log=True, maxlog=15, cmap=cm.hot, bunit='snu', dpc=distance, arcsec=True)
 

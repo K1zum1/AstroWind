@@ -2,16 +2,7 @@ import numpy as np
 from parameters import *
 
 # Function to create a coordinate system
-def xyz(d):
-    limsx, limsy, limsz = 64, 64, 64
-    x_values = np.linspace(-limsx, limsx, nx) * AU
-    y_values = np.linspace(-limsy, limsy, ny) * AU
-    z_values = np.linspace(-limsz, limsz, nz) * AU
-
-    x_values = x_values[x_values != 0]
-    y_values = y_values[y_values != 0]
-    z_values = z_values[z_values != 0]
-
+def xyz(x_values, y_values, z_values):
     X, Y, Z = np.meshgrid(x_values, y_values, z_values, indexing="ij")
 
     R_plane = np.sqrt(X**2 + Y**2)
@@ -19,7 +10,7 @@ def xyz(d):
 
     r_base = R_plane * np.abs(d) / (np.abs(d) + np.abs(z_values))
 
-    return x_values, y_values, z_values, R_values, R_plane, r_base, X, Y, Z
+    return R_values, R_plane, r_base, X, Y, Z
 
 # Function to calculate the angle
 def calculate_angle(R_plane, z_values):
@@ -53,11 +44,11 @@ def wind_density(x_values, y_values, z_values, delta):
 # Main Execution
 try:
     # Call all the functions to calculate the wind density
-    x_values, y_values, z_values, R_values, R_plane, r_base, X, Y, Z = xyz(d)
+    R_values, R_plane, r_base, X, Y, Z = xyz(xc, yc, zc)
     vp_wi_l = calculate_vp(d, GM_star, lmbda, r_base)
-    delta = calculate_angle(R_plane, z_values)
-    density = wind_density(x_values, y_values, z_values, delta)
-
+    delta = calculate_angle(R_plane, zc)
+    density = wind_density(xc, yc, zc, delta)
+    print(xc.shape)
     # Save the results to CSV files
     density_flattened = density.flatten()
     np.savetxt("wind_density_output.csv", density_flattened, delimiter=",", header="Density", comments="")
