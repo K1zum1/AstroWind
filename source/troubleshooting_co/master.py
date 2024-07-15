@@ -28,16 +28,18 @@ def calculate_vp(d, GM_star, lmbda, r_base):
     vp = (np.sqrt(factor) * np.sqrt(GM_star)) / np.sqrt(r_base)
     return vp
 
+
+# for troubleshooting purposes, this function was changed to give a constant wind_density within a specified cone
 def wind_density(x_values, y_values, z_values, delta):
     abs_cos_delta = np.abs(np.cos(delta))
     vals = np.full((nx, ny, nz), 0)
-    min_val = 0.73
-    max_val = 0.75
+    min_val = 0.73 # minimum cos(delta) value
+    max_val = 0.75 # maximum cos(delta) value
     for i in range(0, nx):
         for j in range(0, ny):
                 for k in range(0, nz):
                         if ((abs_cos_delta[i,j,k] <= max_val) and (abs_cos_delta[i,j,k] >= min_val)):
-                                vals[i,j,k] = 1e6
+                                vals[i,j,k] = 1e6 # assigns value to everything within the specified angles, everything else left as zero
     vals = vals*(2.3e-24)
     return vals
 
