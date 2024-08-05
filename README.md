@@ -1,4 +1,4 @@
-# Stellar Accretion Disk Winds Model
+# AstroWind: Disk Wind Simulator
 
 This program simulates aspects of stellar accretion disk winds. Key computations involve detailed analyses of mass-loss rates, wind velocities (both azimuthal and poloidal components), and the cylindrical radius on a 3D Cartesian grid. 
  
