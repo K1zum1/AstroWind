@@ -2,6 +2,13 @@
 
 This program simulates aspects of stellar accretion disk winds. Key computations involve detailed analyses of mass-loss rates, wind velocities (both azimuthal and poloidal components), and the cylindrical radius on a 3D Cartesian grid. 
  
+## Acknowledgements
+
+This project was completed by myself for the SETI Spring 2024 internship, under the supervision of Dr. Uma Gorti. I would like to express my deepest appreciation to Dr. Gorti for her guidance and support throughout the course of this project. 
+
+From June to August 2024, this project was continued by Sophie Clark from University of Florida who continued to fine tune the model to enhance the accuracy of images. 
+
+As of September 2024, this project is not being worked on by anyone, but it is the first step in a two year research project being conducted by Dr. Gorti. Please reach out to her for further questions.
 
 ## Prerequisites
 
@@ -35,22 +42,9 @@ Upon successful execution with correctly defined parameters, you should observe 
 
 ![Density Map Output](example.png)
 
-## Acknowledgements
+Next, continue onto the radmc3d_setup to learn how to integrate this data with the RADMC3D, which is a diagnostic radiative transfer calculator. This will allow us to use the geometrical distribution of gas and/or dust, what its images and/or spectra look like when viewed from a certain angle, allowing modelers to compare their models with observed data. Here's a sample!
 
-This project was completed by myself for the SETI Spring 2024 internship, under the supervision of Dr. Uma Gorti. 
-I would like to express my deepest appreciation to Dr. Gorti for her guidance and support throughout the 
-course of this project. 
+![H2 output](example2.png)
 
-As of June 2024, this project will be maintained by Sophie Clark as part of the SETI Institute 2024 REU Program. 
 
-## Contributing
-
-Any contributions you make are **greatly appreciated**. I have left many remarks on the code
-for features I am looking to implement. 
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/Feature`)
-3. Commit your Changes (`git commit -m 'Add some Feature'`)
-4. Push to the Branch (`git push origin feature/Feature`)
-5. Open a Pull Request
 
